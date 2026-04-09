@@ -243,12 +243,11 @@ You are **NOT allowed to use ACNOS components for commercial purposes** without 
 
 - ACNOS is currently in **early conceptual development**
 - Documentation will expand as the project evolves
-- Infrastructure and protocol design may change over time
-
+- Developers Help is Greatly Appreciated
+- Contribute your skills to make humanity independent.
 ---
 
 # 👤 Author
 
 **Avrodip Shee**
-
 Creator of **ACNOS (Avrodip Community Network Operating System)**
