@@ -118,7 +118,7 @@ ACNOS provides multiple communication features inside the network.
 
 Voice calls within the ACNOS network work similar to VoIP but operate **entirely inside the mesh network**.
 
-User Phone → Nearby ACNOS Tower → Mesh Network → Receiver Tower → Receiver Device.
+**User Phone → Nearby ACNOS Tower → Mesh Network → Receiver Tower → Receiver Device.**
 
 
 No telecom operator required.
