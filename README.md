@@ -3,8 +3,14 @@
 <!-- ====================================================== -->
 
 <p align="center">
-  <img src="banner.svg" alt="ACNOS Banner" width="100%">
+  <a href="https://acnos.neopix.in">
+    <img src="banner.svg" alt="ACNOS Banner" width="100%">
+  </a>
 </p>
+
+# <a href="https://acnos.neopix.in" style="color:#00BFFF;text-decoration:none;">
+ACNOS — Avrodip Community Network OS
+</a>
 
 <!-- Replace the image above with your banner -->
 <!-- Suggested path: /assets/acnos-banner.png -->
