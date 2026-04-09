@@ -9,7 +9,7 @@
 <!-- Replace the image above with your banner -->
 <!-- Suggested path: /assets/acnos-banner.png -->
 
-# ACNOS — Avrodip Community Network Operating System
+# ACNOS — Avrodip Community Network OS (https://acnos.neopix.in)
 
 **Concept & Founder:** Avrodip Shee  
 
