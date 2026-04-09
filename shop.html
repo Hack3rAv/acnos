@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACNOS | Hardware Depot</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Shop Specific Layout - Fixed with CSS Grid to prevent overlap */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Exact 50/50 split */
+            gap: 2rem;
+            align-items: center;
+            min-height: 100vh;
+            padding-top: 10vh;
+            padding-bottom: 10vh;
+            position: relative;
+            z-index: 2;
+            pointer-events: none; /* Let clicks pass to 3D */
+        }
+
+        .product-info {
+            width: 100%;
+            max-width: 550px;
+            pointer-events: auto; /* Re-enable clicks for buttons */
+            background: rgba(3, 3, 5, 0.7);
+            padding: 3rem;
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            justify-self: end; /* Push to the far right of its column */
+        }
+
+        /* Hide the 3D spacer on mobile so text stacks cleanly */
+        @media (max-width: 900px) {
+            .shop-grid { grid-template-columns: 1fr; justify-items: center; }
+            .3d-spacer { display: none; }
+            .product-info { justify-self: center; margin-top: 50vh; } /* Push text down on mobile so 3D is visible above it */
+        }
+
+        .price-tag {
+            font-size: 3rem;
+            color: #fff;
+            font-weight: 800;
+            margin: 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .price-tag span {
+            font-size: 1.2rem;
+            color: #a1a1aa;
+            text-decoration: line-through;
+            font-weight: 400;
+        }
+
+        .spec-list {
+            list-style: none;
+            margin: 2rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+        }
+
+        .spec-list li {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: #a1a1aa;
+        }
+
+        .spec-list li span {
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .buy-btn {
+            flex: 2;
+            background: var(--accent-glow);
+            color: #000;
+            border: none;
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .buy-btn:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .explode-btn {
+            flex: 1;
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .explode-btn:hover, .explode-btn.active {
+            border-color: var(--accent-glow);
+            color: var(--accent-glow);
+            background: rgba(0, 255, 204, 0.05);
+        }
+
+        /* Fixed 3D Canvas */
+        #shop-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <nav style="z-index: 100; pointer-events: auto;">
+        <a href="index.html" class="nav-logo">ACNOS<span>.</span></a>
+        <div class="nav-links">
+            <a href="index.html#s1-vision">Vision</a>
+            <a href="index.html#s2-tech">Technology</a>
+            <a href="https://docs.neopix.in/acnos" target="_blank" style="color: var(--accent-glow); text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);">Docs</a>
+            <a href="donate.html" class="nav-btn">Donate</a>
+        </div>
+    </nav>
+
+    <div id="shop-canvas"></div>
+
+    <div class="smooth-scroll-wrapper">
+        <main id="acnos-sections">
+            
+            <section class="shop-grid content-block">
+                <div class="3d-spacer"></div>
+
+                <div class="reveal-up product-info">
+                    <h3 class="highlight" style="font-size: 1.2rem; letter-spacing: 4px;">AMP HARDWARE</h3>
+                    <h1 style="font-size: clamp(3rem, 5vw, 4rem); margin: 0.5rem 0; line-height: 1;">MICRO TOWER v1.0</h1>
+                    
+                    <div class="price-tag">
+                        $299 <span>$450</span>
+                    </div>
+
+                    <p style="font-size: 1.2rem; color: #a1a1aa; line-height: 1.6;">
+                        The backbone of the ACNOS mesh. Arrives preconfigured with AMP firmware. Mount it, power it, and your node is online. Earning you native network access.
+                    </p>
+
+                    <ul class="spec-list">
+                        <li>Protocol <span>ACNOS Mesh (AMP)</span></li>
+                        <li>Range (Line of Sight) <span>Up to 15km</span></li>
+                        <li>Compute Core <span>Quad-Core ARM Cortex</span></li>
+                        <li>Power Draw <span>< 5W (Solar Compatible)</span></li>
+                    </ul>
+
+                    <div class="btn-group">
+                        <button class="buy-btn" onclick="alert('Checkout Gateway offline during beta.')">PRE-ORDER</button>
+                        <button class="explode-btn" id="toggleExplode">VIEW SCHEMATICS</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="shop-grid content-block">
+                <div class="3d-spacer"></div>
+
+                <div class="reveal-up product-info">
+                    <h3 class="highlight" style="font-size: 1.2rem; letter-spacing: 4px;">NETWORK ACCESS KEY</h3>
+                    <h1 style="font-size: clamp(3rem, 5vw, 4rem); margin: 0.5rem 0; line-height: 1;">ACNOS SIM</h1>
+                    
+                    <div class="price-tag">
+                        $19 <span>Standalone</span>
+                    </div>
+
+                    <p style="font-size: 1.2rem; color: #a1a1aa; line-height: 1.6;">
+                        Can't host a tower? Buy a standalone SIM to securely connect your smartphone directly to the existing ACNOS community infrastructure.
+                    </p>
+
+                    <ul class="spec-list">
+                        <li>Mesh Comms <span>100% Free / Unlimited</span></li>
+                        <li>Compatibility <span>Universal LTE/GSM</span></li>
+                        <li>Encryption <span>AMP Native Security</span></li>
+                    </ul>
+
+                    <div class="btn-group">
+                        <button class="buy-btn" onclick="alert('SIM Dispatch offline during beta.')">ORDER SIM</button>
+                    </div>
+                </div>
+            </section>
+
+            <footer style="width: 100vw; margin-left: calc(-50vw + 50%); background: linear-gradient(to top, #030305 80%, transparent); padding: 5rem 5vw 2rem 5vw; position: relative; z-index: 20; pointer-events: auto;">
+                <div class="reveal-up" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 4rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 3rem;">
+                    
+                    <div style="max-width: 400px;">
+                        <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: #fff;">ACNOS<span style="color: var(--accent-glow);">.</span></h2>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">Avrodip Community Network Operating System. Built by Neopix.</p>
+                    </div>
+
+                    <div style="display: flex; gap: 4rem; flex-wrap: wrap;">
+                        <ul style="list-style: none; font-size: 0.95rem;">
+                            <li style="color: #fff; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px;">ECOSYSTEM</li>
+                            <li style="margin-bottom: 1rem;"><a href="dialer.html" style="color: #a1a1aa; text-decoration: none;">Dialer App</a></li>
+                            <li style="margin-bottom: 1rem;"><a href="subscription.html" style="color: #a1a1aa; text-decoration: none;">Gateways</a></li>
+                        </ul>
+                        <ul style="list-style: none; font-size: 0.95rem;">
+                            <li style="color: #fff; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px;">SUPPORT CORE</li>
+                            <li style="margin-bottom: 1rem;"><a href="contribute.html" style="color: #a1a1aa; text-decoration: none;">Contribute / Join Team</a></li>
+                            <li><a href="donors.html" style="color: var(--accent-glow); text-decoration: none; font-weight: 600;">Hall of Visionaries</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // 1. SCROLL ENGINE (FASTER)
+        const lenis = new Lenis({ duration: 1.2, smooth: true });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+
+        // GSAP Reveals - FAST & SNAPPY
+        const reveals = document.querySelectorAll('.reveal-up');
+        reveals.forEach((el, index) => {
+            gsap.to(el, {
+                scrollTrigger: { trigger: el, start: "top 95%" },
+                opacity: 1, 
+                y: 0, 
+                duration: 0.5, 
+                ease: "power2.out", 
+                delay: index * 0.05
+            });
+        });
+
+        // 2. THE 3D SHOP ENGINE
+        const container = document.getElementById('shop-canvas');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x030305, 0.015);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 12;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        // SUPER BRIGHT LIGHTING
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1.2); 
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 2); 
+        directionalLight.position.set(5, 10, 7);
+        scene.add(directionalLight);
+        const accentLight = new THREE.PointLight(0x00ffcc, 4, 30); 
+        accentLight.position.set(-5, 5, 5);
+        scene.add(accentLight);
+
+        const xPos = window.innerWidth > 900 ? -4 : 0; // Lock to left side on desktop
+
+        // --- MODEL 1: MICRO TOWER ---
+        const towerGroup = new THREE.Group();
+        towerGroup.position.x = xPos; 
+        towerGroup.position.y = 0; // Starts at zero
+        scene.add(towerGroup);
+
+        const shellMat = new THREE.MeshStandardMaterial({ color: 0x333333, metalness: 0.7, roughness: 0.3 });
+        const logicMat = new THREE.MeshBasicMaterial({ color: 0x00ffcc, wireframe: true });
+        const glassMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0.2, roughness: 0.1, transmission: 0.9, transparent: true });
+
+        const parts = {};
+        parts.base = new THREE.Mesh(new THREE.CylinderGeometry(2, 2.5, 1.5, 8), shellMat);
+        parts.chamber = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 1.5, 4, 16), glassMat);
+        parts.chamber.position.y = 2.75;
+        parts.core = new THREE.Mesh(new THREE.IcosahedronGeometry(0.8, 1), logicMat);
+        parts.core.position.y = 2.75;
+        parts.mount = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 1.5, 0.5, 8), shellMat);
+        parts.mount.position.y = 5;
+        parts.antenna = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.2, 5, 8), shellMat);
+        parts.antenna.position.y = 7.75;
+
+        towerGroup.add(parts.base, parts.chamber, parts.core, parts.mount, parts.antenna);
+
+        let isExploded = false;
+        const assembledY = { base: 0, mount: 5, antenna: 7.75 };
+        const explodedY = { base: -2, mount: 7.5, antenna: 12 };
+
+        const btn = document.getElementById('toggleExplode');
+        btn.addEventListener('click', () => {
+            isExploded = !isExploded;
+            btn.classList.toggle('active');
+            btn.innerText = isExploded ? 'ASSEMBLE UNIT' : 'VIEW SCHEMATICS';
+            const targets = isExploded ? explodedY : assembledY;
+            gsap.to(parts.base.position, { y: targets.base, duration: 1, ease: "power3.inOut" });
+            gsap.to(parts.mount.position, { y: targets.mount, duration: 1, ease: "power3.inOut" });
+            gsap.to(parts.antenna.position, { y: targets.antenna, duration: 1, ease: "power3.inOut" });
+            gsap.to(parts.chamber.material, { opacity: isExploded ? 0.1 : 1, duration: 1 });
+        });
+
+        // --- MODEL 2: ACNOS SIM CARD ---
+        const simGroup = new THREE.Group();
+        simGroup.position.x = xPos;
+        simGroup.position.y = -14; // Positioned perfectly for Section 2
+        scene.add(simGroup);
+
+        const width = 2.5; const height = 3.5; const clip = 0.8;
+        const simShape = new THREE.Shape();
+        simShape.moveTo(-width/2, height/2);
+        simShape.lineTo(width/2 - clip, height/2);
+        simShape.lineTo(width/2, height/2 - clip);
+        simShape.lineTo(width/2, -height/2);
+        simShape.lineTo(-width/2, -height/2);
+        simShape.lineTo(-width/2, height/2);
+
+        const simGeo = new THREE.ExtrudeGeometry(simShape, { depth: 0.1, bevelEnabled: true, bevelSize: 0.05, bevelThickness: 0.05 });
+        const simMesh = new THREE.Mesh(simGeo, new THREE.MeshPhysicalMaterial({ color: 0x111111, metalness: 0.9, roughness: 0.2 }));
+        simMesh.position.z = -0.05; 
+        simGroup.add(simMesh);
+
+        const chipGeo = new THREE.PlaneGeometry(1.5, 1.5, 3, 3);
+        const chip = new THREE.Mesh(chipGeo, new THREE.MeshBasicMaterial({ color: 0x00ffcc, wireframe: true }));
+        chip.position.set(0, -0.5, 0.12);
+        simGroup.add(chip);
+
+        // Interactive Tracking
+        const mouse = new THREE.Vector2();
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // Animation Loop
+        const clock = new THREE.Clock();
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = clock.getElapsedTime();
+
+            // Tower Animations
+            towerGroup.rotation.y += 0.005;
+            parts.core.rotation.y -= 0.02;
+            parts.core.rotation.z += 0.01;
+
+            // SIM Animations
+            simGroup.rotation.y += 0.005;
+            simGroup.position.y = -14 + Math.sin(time) * 0.2; // Float effect
+
+            // Mouse Tilt for both
+            const targetRotX = mouse.y * 0.2;
+            const targetRotY = mouse.x * 0.2;
+            towerGroup.rotation.x += (targetRotX - towerGroup.rotation.x) * 0.05;
+            simGroup.rotation.x += (targetRotX - simGroup.rotation.x) * 0.05;
+
+            // Accurate Camera Parallax (Moves camera down as you scroll to reveal SIM)
+            const scrollY = window.scrollY;
+            camera.position.y = -(scrollY * 0.013);
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            towerGroup.position.x = window.innerWidth > 900 ? -4 : 0;
+            simGroup.position.x = window.innerWidth > 900 ? -4 : 0;
+        });
+    </script>
+</body>
+</html>

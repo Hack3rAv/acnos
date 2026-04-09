@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACNOS | Hall of Visionaries</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Equalized Holographic Showcase Architecture */
+        .thank-you-banner {
+            background: rgba(0, 255, 204, 0.05);
+            border: 1px solid rgba(0, 255, 204, 0.2);
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 5rem auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .node-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* EVERY NODE IS EQUAL */
+        .donor-node {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(8px);
+            flex-grow: 1; /* Allows them to fill space evenly */
+            justify-content: center;
+            max-width: 350px;
+        }
+
+        .donor-node:hover {
+            background: rgba(0, 255, 204, 0.1);
+            border-color: var(--accent-glow);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 204, 0.15);
+        }
+
+        .donor-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f4f4f5;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Pulsing "Online" Dot */
+        .pulse-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-glow);
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .pulse-dot::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--accent-glow);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">ACNOS<span>.</span></a>
+        <div class="nav-links">
+            <a href="index.html#s1-vision">Vision</a>
+            <a href="index.html#s2-tech">Technology</a>
+            <a href="https://docs.neopix.in/acnos" target="_blank" style="color: var(--accent-glow); text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);">Docs</a>
+            <a href="donate.html" class="nav-btn">Donate</a>
+        </div>
+    </nav>
+
+    <div id="canvas-container"></div>
+
+    <div class="smooth-scroll-wrapper">
+        <main id="acnos-sections">
+            
+            <section style="padding-top: 20vh; min-height: 100vh;">
+                <div class="content-block">
+                
+                    <section style="padding-top: 20vh; min-height: 80vh;">
+                <div class="content-block" style="text-align: center;">
+                    <h3 class="reveal-up highlight" style="font-size: 1.2rem; letter-spacing: 4px;">THE BACKBONE OF THE NETWORK</h3>
+                    <h1 class="reveal-up" style="font-size: clamp(4rem, 10vw, 8rem); margin: 1rem 0; line-height: 0.9;">HALL OF<br>VISIONARIES</h1>
+                    <p class="reveal-up" style="font-size: 1.5rem; color: #a1a1aa; max-width: 700px; margin: 2rem auto;">
+                        ACNOS is not funded by telecom monopolies or venture capitalists. It is built by the people. These are the architects funding the decentralized future.
+                    </p>
+                </div>
+            </section>
+
+                    <div class="node-cluster">
+                        <div class="reveal-up donor-node">
+                            <div class="pulse-dot"></div>
+                            <div class="donor-name">Initialization Sector</div>
+                        </div>
+                        <div class="reveal-up donor-node">
+                            <div class="pulse-dot"></div>
+                            <div class="donor-name">Anonymous Proxy</div>
+                        </div>
+                        <div class="reveal-up donor-node">
+                            <div class="pulse-dot"></div>
+                            <div class="donor-name">Project Zenith</div>
+                        </div>
+                        <div class="reveal-up donor-node">
+                            <div class="pulse-dot"></div>
+                            <div class="donor-name">Cipher Protocol</div>
+                        </div>
+                        <div class="reveal-up donor-node">
+                            <div class="pulse-dot"></div>
+                            <div class="donor-name">Dr. E. Tyrell</div>
+                        </div>
+                        <div class="reveal-up donor-node">
+                            <div class="pulse-dot"></div>
+                            <div class="donor-name">System_Override</div>
+                        </div>
+                        <div class="reveal-up donor-node">
+                            <div class="pulse-dot"></div>
+                            <div class="donor-name">Ghost_In_The_Mesh</div>
+                        </div>
+                        <div class="reveal-up donor-node">
+                            <div class="pulse-dot"></div>
+                            <div class="donor-name">Neo_Architect</div>
+                        </div>
+                        <div class="reveal-up donor-node">
+                            <div class="pulse-dot"></div>
+                            <div class="donor-name">Signal_Flare</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+
+            <section style="min-height: 40vh; align-items: center; text-align: center; padding-top: 0;">
+                <div class="content-block">
+                    <h2 class="reveal-up" style="font-size: 2.5rem; margin-bottom: 2rem; color: #fff;">BRING YOUR NODE ONLINE</h2>
+                    <a href="donate.html" class="reveal-up nav-btn" style="padding: 1.2rem 3.5rem; font-size: 1.1rem; background: var(--accent-glow); color: #000 !important; font-weight: 800;">
+                        JOIN THE GRID
+                    </a>
+                </div>
+            </section>
+
+            <footer style="width: 100vw; margin-left: calc(-50vw + 50%); background: linear-gradient(to top, #030305 70%, transparent); padding: 5rem 5vw 2rem 5vw; position: relative; z-index: 20;">
+                <div class="reveal-up" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 4rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 3rem;">
+                    
+                    <div style="max-width: 400px;">
+                        <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: #fff;">ACNOS<span style="color: var(--accent-glow);">.</span></h2>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">Avrodip Community Network Operating System. Built by Neopix.</p>
+                    </div>
+
+                    <div style="display: flex; gap: 4rem; flex-wrap: wrap;">
+                        <ul style="list-style: none; font-size: 0.95rem;">
+                            <li style="color: #fff; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px;">ECOSYSTEM</li>
+                            <li style="margin-bottom: 1rem;"><a href="shop.html" style="color: #a1a1aa; text-decoration: none;">Hardware Shop</a></li>
+                            <li style="margin-bottom: 1rem;"><a href="dialer.html" style="color: #a1a1aa; text-decoration: none;">Dialer App</a></li>
+                        </ul>
+                        <ul style="list-style: none; font-size: 0.95rem;">
+                            <li style="color: #fff; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px;">SUPPORT CORE</li>
+                            <li style="margin-bottom: 1rem;"><a href="contribute.html" style="color: #a1a1aa; text-decoration: none;">Contribute / Join Team</a></li>
+                            <li><a href="index.html" style="color: #a1a1aa; text-decoration: none;">Back to Main Terminal</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // 1. SCROLL ENGINE (LENIS)
+        const lenis = new Lenis({ duration: 1.5, smooth: true });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+
+        // GSAP Reveals
+        const reveals = document.querySelectorAll('.reveal-up');
+        reveals.forEach((el, index) => {
+            gsap.to(el, {
+                scrollTrigger: { trigger: el, start: "top 90%" },
+                opacity: 1, 
+                y: 0, 
+                duration: 1, 
+                ease: "power3.out",
+                delay: el.classList.contains('donor-node') ? Math.random() * 0.3 : 0 // Random stagger for equal nodes
+            });
+        });
+
+        // 2. THE VISIONARY VORTEX (THREE.JS)
+        const canvasContainer = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x030305, 0.02);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 20;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        canvasContainer.appendChild(renderer.domElement);
+
+        const vortexGroup = new THREE.Group();
+        scene.add(vortexGroup);
+
+        // The Central Monolith
+        const monolithGeo = new THREE.CylinderGeometry(0.1, 2, 60, 4);
+        const monolithMat = new THREE.MeshBasicMaterial({ 
+            color: 0x00ffcc, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.1 
+        });
+        const monolith = new THREE.Mesh(monolithGeo, monolithMat);
+        vortexGroup.add(monolith);
+
+        // Community Particles (The Vortex)
+        const particleCount = 1500; // Increased to represent massive equal community
+        const particleGeo = new THREE.BufferGeometry();
+        const particlePos = new Float32Array(particleCount * 3);
+        const particleData = [];
+
+        for(let i=0; i<particleCount; i++) {
+            const radius = 2 + Math.random() * 18;
+            const angle = Math.random() * Math.PI * 2;
+            const y = (Math.random() - 0.5) * 60;
+
+            particlePos[i*3] = Math.cos(angle) * radius;
+            particlePos[i*3+1] = y;
+            particlePos[i*3+2] = Math.sin(angle) * radius;
+
+            particleData.push({
+                radius: radius,
+                angle: angle,
+                speed: (Math.random() * 0.015) + 0.005,
+                yOffset: y
+            });
+        }
+        
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
+        const particleMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.04, transparent: true, opacity: 0.5 });
+        const particles = new THREE.Points(particleGeo, particleMat);
+        vortexGroup.add(particles);
+
+        // Mouse tracking for Vortex Tilt
+        const mouse = new THREE.Vector2();
+        window.addEventListener('mousemove', (event) => {
+            mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+            mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // Animation Loop
+        function animate() {
+            requestAnimationFrame(animate);
+
+            monolith.rotation.y += 0.002;
+
+            vortexGroup.rotation.x += (mouse.y * 0.15 - vortexGroup.rotation.x) * 0.05;
+            vortexGroup.rotation.y += (mouse.x * 0.15 - vortexGroup.rotation.y) * 0.05;
+
+            const positions = particles.geometry.attributes.position.array;
+            for(let i=0; i<particleCount; i++) {
+                particleData[i].angle += particleData[i].speed;
+                particleData[i].yOffset += Math.sin(particleData[i].angle) * 0.03; 
+
+                positions[i*3] = Math.cos(particleData[i].angle) * particleData[i].radius;
+                positions[i*3+1] = particleData[i].yOffset;
+                positions[i*3+2] = Math.sin(particleData[i].angle) * particleData[i].radius;
+            }
+            particles.geometry.attributes.position.needsUpdate = true;
+
+            camera.position.y = -(window.scrollY * 0.01);
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

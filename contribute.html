@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACNOS | Join the Core</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Contribute Form & Role Styles */
+        .terminal-panel {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .role-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .role-item {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--accent-glow);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .role-item:hover {
+            border-color: rgba(0, 255, 204, 0.3);
+            background: rgba(0, 255, 204, 0.05);
+        }
+
+        .role-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .role-title {
+            font-size: 1.3rem;
+            color: #fff;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .role-status {
+            font-size: 0.8rem;
+            color: var(--accent-glow);
+            letter-spacing: 2px;
+            border: 1px solid var(--accent-glow);
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+        }
+
+        .role-desc {
+            font-size: 1rem;
+            color: #a1a1aa;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #a1a1aa;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .terminal-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1.1rem;
+            padding: 1rem;
+            border-radius: 12px;
+            outline: none;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .terminal-input:focus {
+            border-color: var(--accent-glow);
+        }
+
+        textarea.terminal-input {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: transparent;
+            color: var(--accent-glow);
+            border: 1px solid var(--accent-glow);
+            padding: 1.2rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-glow);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">ACNOS<span>.</span></a>
+        <div class="nav-links">
+            <a href="index.html#s1-vision">Vision</a>
+            <a href="index.html#s2-tech">Technology</a>
+            <a href="https://docs.neopix.in/acnos" target="_blank" style="color: var(--accent-glow); text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);">Docs</a>
+            <a href="donate.html" class="nav-btn">Donate</a>
+        </div>
+    </nav>
+
+    <div id="canvas-container"></div>
+
+    <div class="smooth-scroll-wrapper">
+        <main id="acnos-sections">
+            
+            <section style="padding-top: 15vh; min-height: 100vh; display: flex; align-items: center;">
+                <div class="content-block" style="display: flex; flex-wrap: wrap; gap: 4rem; justify-content: space-between; align-items: flex-start;">
+                    
+                    <div style="flex: 1; min-width: 300px; max-width: 600px;">
+                        <h3 class="reveal-up highlight" style="font-size: 1.2rem; letter-spacing: 4px;">THE FORGE</h3>
+                        <h1 class="reveal-up" style="font-size: clamp(3rem, 6vw, 5rem); margin: 1rem 0; line-height: 1;">BECOME A<br>CORE ARCHITECT</h1>
+                        <p class="reveal-up" style="font-size: 1.3rem; color: #a1a1aa; margin-bottom: 2rem;">
+                            ACNOS is currently being developed entirely solo. To transition from a working prototype to a global infrastructure, the core team needs firepower. We are actively recruiting visionaries.
+                        </p>
+
+                        <ul class="role-list">
+                            <li class="reveal-up role-item">
+                                <div class="role-title">RF & Hardware Engineers <span class="role-status">HIGH PRIORITY</span></div>
+                                <div class="role-desc">Optimize the Micro Tower antenna arrays and compute units for maximum range and minimal power draw.</div>
+                            </li>
+                            <li class="reveal-up role-item">
+                                <div class="role-title">Mesh Protocol Specialists <span class="role-status">OPEN</span></div>
+                                <div class="role-desc">Refine the AMP (ACNOS Mesh Protocol) for faster packet routing and self-healing network topology.</div>
+                            </li>
+                            <li class="reveal-up role-item">
+                                <div class="role-title">Backend & Cryptography <span class="role-status">OPEN</span></div>
+                                <div class="role-desc">Build the secure bridging between the ACNOS mesh and public internet gateways.</div>
+                            </li>
+                            <li class="reveal-up role-item">
+                                <div class="role-title">Field Operatives <span class="role-status">OPEN</span></div>
+                                <div class="role-desc">Early adopters willing to install test nodes in rural environments to stress-test the network.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="reveal-up terminal-panel">
+                        <div style="margin-bottom: 2rem;">
+                            <h2 style="font-size: 2rem; color: #fff;">ESTABLISH HANDSHAKE</h2>
+                            <p style="color: #a1a1aa; font-size: 1rem;">Transmit your credentials directly to the core server.</p>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Codename / Alias</label>
+                            <input type="text" class="terminal-input" placeholder="Enter your handle...">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Transmission Channel (Email)</label>
+                            <input type="email" class="terminal-input" placeholder="Secure email address...">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Area of Expertise</label>
+                            <select class="terminal-input" style="appearance: none;">
+                                <option value="" disabled selected>Select your sector...</option>
+                                <option value="rf">RF / Hardware Engineering</option>
+                                <option value="protocol">Mesh Protocols / Networking</option>
+                                <option value="backend">Backend / Crypto</option>
+                                <option value="field">Field Operative / Beta Tester</option>
+                                <option value="other">Other / General Visionary</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label>Data Link (GitHub / Portfolio)</label>
+                            <input type="text" class="terminal-input" placeholder="https://...">
+                        </div>
+
+                        <div class="input-group">
+                            <label>Transmission Payload</label>
+                            <textarea class="terminal-input" placeholder="Why do you want to build the decentralized future?"></textarea>
+                        </div>
+
+                        <button class="submit-btn" onclick="alert('Handshake protocol initiated. Core systems will review your transmission.')">INITIATE HANDSHAKE</button>
+                    </div>
+
+                </div>
+            </section>
+
+            <footer style="width: 100vw; margin-left: calc(-50vw + 50%); background: linear-gradient(to top, #030305 80%, transparent); padding: 5rem 5vw 2rem 5vw; position: relative; z-index: 20;">
+                <div class="reveal-up" style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 4rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 3rem;">
+                    
+                    <div style="max-width: 400px;">
+                        <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: #fff;">ACNOS<span style="color: var(--accent-glow);">.</span></h2>
+                        <p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">Avrodip Community Network Operating System. Built by Neopix.</p>
+                        
+                        <div style="padding: 1.5rem; border-left: 3px solid #ff3366; background: rgba(255, 51, 102, 0.05); border-radius: 0 8px 8px 0;">
+                            <p style="font-size: 0.8rem; color: #ff3366; line-height: 1.5; font-weight: 600;">
+                                SECURITY PROTOCOL // PATENT WARNING<br>
+                                The ACNOS Mesh Protocol (AMP), hardware schematics, and OS architecture are strictly patented properties of Neopix.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 4rem; flex-wrap: wrap;">
+                        <ul style="list-style: none; font-size: 0.95rem;">
+                            <li style="color: #fff; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px;">ECOSYSTEM</li>
+                            <li style="margin-bottom: 1rem;"><a href="shop.html" style="color: #a1a1aa; text-decoration: none;">Hardware Shop</a></li>
+                            <li style="margin-bottom: 1rem;"><a href="dialer.html" style="color: #a1a1aa; text-decoration: none;">Dialer App</a></li>
+                        </ul>
+                        <ul style="list-style: none; font-size: 0.95rem;">
+                            <li style="color: #fff; font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px;">SUPPORT CORE</li>
+                            <li style="margin-bottom: 1rem;"><a href="donate.html" style="color: #a1a1aa; text-decoration: none;">Fund the Network</a></li>
+                            <li><a href="donors.html" style="color: #a1a1aa; text-decoration: none;">Hall of Visionaries</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <script>
+        // 1. SCROLL ENGINE
+        const lenis = new Lenis({ duration: 1.5, smooth: true });
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
+
+        // GSAP Reveals
+        const reveals = document.querySelectorAll('.reveal-up');
+        reveals.forEach((el, index) => {
+            gsap.to(el, {
+                scrollTrigger: { trigger: el, start: "top 90%" },
+                opacity: 1, y: 0, duration: 1, ease: "power3.out", delay: index * 0.05
+            });
+        });
+
+        // 2. THE BLUEPRINT MATRIX (THREE.JS)
+        const canvasContainer = document.getElementById('canvas-container');
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x030305, 0.02);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 15;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        canvasContainer.appendChild(renderer.domElement);
+
+        const matrixGroup = new THREE.Group();
+        matrixGroup.position.x = window.innerWidth > 900 ? -4 : 0; // Shift left
+        scene.add(matrixGroup);
+
+        // Complex Wireframe Core (Torus Knot)
+        const knotGeo = new THREE.TorusKnotGeometry(3, 0.8, 100, 16);
+        const knotMat = new THREE.MeshBasicMaterial({ 
+            color: 0x00ffcc, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.3 
+        });
+        const knot = new THREE.Mesh(knotGeo, knotMat);
+        matrixGroup.add(knot);
+
+        // Inner solid core
+        const coreGeo = new THREE.IcosahedronGeometry(1.5, 0);
+        const coreMat = new THREE.MeshBasicMaterial({ color: 0x004433, wireframe: true });
+        const core = new THREE.Mesh(coreGeo, coreMat);
+        matrixGroup.add(core);
+
+        // Holographic Scanner Plane
+        const scannerGeo = new THREE.PlaneGeometry(12, 12);
+        const scannerMat = new THREE.MeshBasicMaterial({
+            color: 0x00ffcc,
+            transparent: true,
+            opacity: 0.2,
+            side: THREE.DoubleSide,
+            blending: THREE.AdditiveBlending
+        });
+        const scanner = new THREE.Mesh(scannerGeo, scannerMat);
+        scanner.rotation.x = Math.PI / 2;
+        matrixGroup.add(scanner);
+
+        // Data Grid Points
+        const pointsGeo = new THREE.BufferGeometry();
+        const pointsCount = 300;
+        const posArray = new Float32Array(pointsCount * 3);
+        for(let i = 0; i < pointsCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 20;
+        }
+        pointsGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const pointsMat = new THREE.PointsMaterial({ size: 0.05, color: 0xffffff, transparent: true, opacity: 0.5 });
+        const points = new THREE.Points(pointsGeo, pointsMat);
+        matrixGroup.add(points);
+
+        // Animation Loop
+        const clock = new THREE.Clock();
+        function animate() {
+            requestAnimationFrame(animate);
+            const time = clock.getElapsedTime();
+
+            // Rotate components
+            knot.rotation.x = time * 0.1;
+            knot.rotation.y = time * 0.2;
+            core.rotation.y = -time * 0.3;
+            points.rotation.y = time * 0.05;
+
+            // Animate Scanner Plane moving up and down
+            scanner.position.y = Math.sin(time * 1.5) * 4;
+
+            // Dynamic opacity based on position
+            scanner.material.opacity = 0.1 + (Math.sin(time * 3) * 0.1);
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            matrixGroup.position.x = window.innerWidth > 900 ? -4 : 0;
+        });
+    </script>
+</body>
+</html>
