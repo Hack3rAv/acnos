@@ -223,8 +223,7 @@ The ultimate goal is **community-owned communication infrastructure**.
 
 # 🔗 Links
 
-### [GitHub](https://github.com/Hack3rAv)
-### [Instagram](https://www.instagram.com/neopix.india)
+### [GitHub](https://github.com/Hack3rAv) | ### [Instagram](https://www.instagram.com/neopix.india)
 # 📝 Notes
 
 - ACNOS is currently in **early conceptual development**
