@@ -235,5 +235,5 @@ The ultimate goal is **community-owned communication infrastructure**.
 # 👤 Author
 
 **Avrodip Shee**
-## Creator of **ACNOS (Avrodip Community Network Operating System)**
+- Creator of **ACNOS (Avrodip Community Network Operating System)**
 
