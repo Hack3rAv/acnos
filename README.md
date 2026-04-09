@@ -3,7 +3,7 @@
 <!-- ====================================================== -->
 
 <p align="center">
-  <img src="assets/acnos-banner.png" alt="ACNOS Banner" width="100%">
+  <img src="banner.svg" alt="ACNOS Banner" width="100%">
 </p>
 
 <!-- Replace the image above with your banner -->
