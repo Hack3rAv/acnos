@@ -9,7 +9,8 @@
 <!-- Replace the image above with your banner -->
 <!-- Suggested path: /assets/acnos-banner.png -->
 
-# ACNOS — Avrodip Community Network OS (https://acnos.neopix.in)
+# [ACNOS — Avrodip Community Network OS](https://acnos.neopix.in)
+click on the [ACNOS](https://acnos.neopix.in) Title to visit the Website.
 
 **Concept & Founder:** Avrodip Shee  
 
@@ -219,26 +220,8 @@ The ultimate goal is **community-owned communication infrastructure**.
 
 # 🔗 Links
 
-### GitHub
-https://github.com/Hack3rAv
-### Instagram
-https://www.instagram.com/neopix.india
-# 📜 License
-
-This project is licensed under:
-
-**Creative Commons Attribution-NonCommercial 4.0 International**
-
-You are allowed to:
-
-- View the source
-- Share the project
-- Modify it for personal or educational use
-
-You are **NOT allowed to use ACNOS components for commercial purposes** without permission.
-
----
-
+### [GitHub](https://github.com/Hack3rAv)
+### [Instagram](https://www.instagram.com/neopix.india)
 # 📝 Notes
 
 - ACNOS is currently in **early conceptual development**
