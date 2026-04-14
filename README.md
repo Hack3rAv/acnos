@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://acnos.neopix.in" target=_blank>
-    <img src="banner.svg" alt="ACNOS Banner" width="100%">
+    <img src="banner.png" alt="ACNOS Banner" width="100%">
   </a>
 </p>
 
