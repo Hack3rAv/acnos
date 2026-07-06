@@ -7,5 +7,5 @@ GATEWAY_KEYWORD = "neopix-super-secret-2026"
 
 [[d1_databases]]
 binding = "DB"
-database_name = ""
-database_id = ""
+database_name = "acnos"
+database_id = "2baf9584-4db0-451d-b2d6-86a65e299807"
