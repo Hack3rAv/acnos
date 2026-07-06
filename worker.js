@@ -2,7 +2,20 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
-    // 1. WebSocket Gateway (Signaling & Multi-party Mesh)
+    // --- 1. GLOBAL CORS PREFLIGHT HANDLING (MUST BE FIRST) ---
+    const corsHeaders = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, x-host-keyword",
+      "Content-Type": "application/json"
+    };
+
+    // Instantly satisfy browser security handshakes safely
+    if (request.method === "OPTIONS") {
+      return new Response(null, { headers: corsHeaders });
+    }
+
+    // --- 2. WEBSOCKET SIGNALING MESH GATEWAY ---
     if (url.pathname === "/ws") {
       if (request.headers.get("Upgrade") !== "websocket") {
         return new Response("Expected WebSocket Upgrade", { status: 426 });
@@ -16,36 +29,28 @@ export default {
       return handleWebSocketSession(request, env);
     }
 
-    // 2. REST API Gateway Header Guard
+    // --- 3. REST API SECURE GATEWAY GUARD ---
     if (url.pathname.startsWith("/api/")) {
       const clientKey = request.headers.get("x-host-keyword");
       if (clientKey !== env.GATEWAY_KEYWORD) {
         return new Response(JSON.stringify({ error: "Gateway Access Denied." }), {
           status: 403,
-          headers: { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }
+          headers: corsHeaders
         });
       }
     }
 
-    const corsHeaders = {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type, x-host-keyword",
-      "Content-Type": "application/json"
-    };
-
-    if (request.method === "OPTIONS") {
-      return new Response(null, { headers: corsHeaders });
-    }
-
-    // Frictionless Device Authentication & Auto-Registration
+    // --- 4. FRICTIONLESS DEVICE AUTHENTICATION & AUTO-REGISTRATION ---
     if (url.pathname === "/api/auth" && request.method === "POST") {
       try {
         const { uuid, display_name } = await request.json();
         const clientIp = request.headers.get("cf-connecting-ip") || "unknown";
 
         if (!uuid) {
-          return new Response(JSON.stringify({ error: "Missing device UUID" }), { status: 400, headers: corsHeaders });
+          return new Response(JSON.stringify({ error: "Missing device UUID" }), { 
+            status: 400, 
+            headers: corsHeaders 
+          });
         }
 
         // Check if device already has an assigned profile
@@ -56,7 +61,7 @@ export default {
         let user;
 
         if (results.length === 0) {
-          // --- AUTO-REGISTRATION GENERATION LOOP ---
+          // --- AUTO-REGISTRATION UNIQUE NUMBER GENERATION LOOP ---
           let isUnique = false;
           let newNumber = "";
 
@@ -72,14 +77,14 @@ export default {
 
           const nameToStore = display_name || `Node-${newNumber}`;
 
-          // Write new frictionless account to the edge database
+          // Write new frictionless account straight into the SQLite edge matrix
           await env.DB.prepare(
             "INSERT INTO users (device_uuid, display_name, assigned_number) VALUES (?, ?, ?)"
           )
           .bind(uuid, nameToStore, newNumber)
           .run();
 
-          // Fetch the newly provisioned row
+          // Pull fresh record assignment state
           const freshUser = await env.DB.prepare("SELECT * FROM users WHERE device_uuid = ?")
             .bind(uuid)
             .all();
@@ -88,7 +93,7 @@ export default {
           user = results[0];
         }
 
-        // Log connectivity event
+        // Log device connectivity telemetry metrics
         await env.DB.prepare("INSERT INTO auth_logs (user_id, ip_address) VALUES (?, ?)")
           .bind(user.id, clientIp)
           .run();
@@ -104,7 +109,10 @@ export default {
         }), { status: 200, headers: corsHeaders });
 
       } catch (err) {
-        return new Response(JSON.stringify({ error: err.message }), { status: 500, headers: corsHeaders });
+        return new Response(JSON.stringify({ error: err.message }), { 
+          status: 500, 
+          headers: corsHeaders 
+        });
       }
     }
 
@@ -131,6 +139,7 @@ async function handleWebSocketSession(request, env) {
           currentRoomId = data.roomId;
           if (!roomSessions[currentRoomId]) roomSessions[currentRoomId] = [];
 
+          // Inform existing nodes of new incoming signaling point
           roomSessions[currentRoomId].forEach(session => {
             session.ws.send(JSON.stringify({
               type: "peer-joined",
