@@ -1,5 +1,5 @@
-name = "acnos-voip-relay"
-main = "src/worker.js"
+name = "acnos"
+main = "worker.js"
 compatibility_date = "2026-07-06"
 
 [vars]
@@ -7,5 +7,5 @@ GATEWAY_KEYWORD = "neopix-super-secret-2026"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "neopix_voip_db"
-database_id = "your_cloudflare_d1_id_here"
+database_name = ""
+database_id = ""
